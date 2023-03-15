@@ -293,7 +293,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="PreBER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="8.737e-09" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreBerTextBlock1"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -320,7 +320,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Pre Errors"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreErrorsTextBlock1"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -339,7 +339,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Corrected"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CorrectedTextBlock1"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -358,7 +358,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Post BER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="0.000e+00" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PostBerTextBlock1"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -377,7 +377,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Margin"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="80% (max: 3)" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="MarginTextBlock1"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -397,7 +397,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="#Bits"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 8 0">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="537,460,265,600" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BitsTextBlock1"/>
                                     </Border>
                                 </Grid>
                             </Grid>
@@ -416,7 +416,7 @@
                                                 <ColumnDefinition Width="8*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="10" />
+                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="1" />
                                             <TextBlock Grid.Column="1" FontSize="15" Foreground="White" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Text=" s"/>
                                         </Grid>
 
@@ -458,7 +458,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="PreBER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="8.737e-09" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreBerTextBlock2"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -485,7 +485,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Pre Errors"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreErrorsTextBlock2"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -504,7 +504,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Corrected"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CorrectedTextBlock2"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -523,7 +523,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Post BER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="0.000e+00" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PostBerTextBlock2"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -542,7 +542,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Margin"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="80% (max: 3)" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="MarginTextBlock2"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -562,7 +562,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="#Bits"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 8 0">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="537,460,265,600" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BitsTextBlock2"/>
                                     </Border>
                                 </Grid>
                             </Grid>
@@ -581,7 +581,7 @@
                                                 <ColumnDefinition Width="8*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="10" />
+                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="1" />
                                             <TextBlock Grid.Column="1" FontSize="15" Foreground="White" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Text=" s"/>
                                         </Grid>
 
@@ -623,7 +623,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="PreBER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="8.737e-09" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreBerTextBlock3"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -650,7 +650,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Pre Errors"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreErrorsTextBlock3"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -669,7 +669,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Corrected"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CorrectedTextBlock3"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -688,7 +688,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Post BER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="0.000e+00" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PostBerTextBlock3"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -707,7 +707,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Margin"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="80% (max: 3)" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="MarginTextBlock3"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -727,7 +727,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="#Bits"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 8 0">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="537,460,265,600" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BitsTextBlock3"/>
                                     </Border>
                                 </Grid>
                             </Grid>
@@ -746,7 +746,7 @@
                                                 <ColumnDefinition Width="8*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="10" />
+                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="1" />
                                             <TextBlock Grid.Column="1" FontSize="15" Foreground="White" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Text=" s"/>
                                         </Grid>
 
@@ -788,7 +788,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="PreBER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="8.737e-09" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreBerTextBlock4"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -815,7 +815,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Pre Errors"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PreErrorsTextBlock4"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -834,7 +834,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Corrected"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="4,696" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CorrectedTextBlock4"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -853,7 +853,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Post BER"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="0.000e+00" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="PostBerTextBlock4"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -872,7 +872,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Margin"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="80% (max: 3)" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="MarginTextBlock4"/>
                                     </Border>
                                     <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <!-- BASE -->
@@ -892,7 +892,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="5 0 0 0" FontSize="15" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Content="#Bits"/>
                                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 8 0">
-                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Text="537,460,265,600" />
+                                        <TextBlock Padding="0 0 10 0" FontSize="15" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="BitsTextBlock4"/>
                                     </Border>
                                 </Grid>
                             </Grid>
@@ -911,7 +911,7 @@
                                                 <ColumnDefinition Width="8*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="10" />
+                                            <TextBox Grid.Column="0" PreviewTextInput="NumberValidationTextBox" Padding="10 0 0 0" FontSize="15" Foreground="White" BorderBrush="Black" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Text="1" />
                                             <TextBlock Grid.Column="1" FontSize="15" Foreground="White" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Text=" s"/>
                                         </Grid>
 
@@ -947,7 +947,7 @@
                                 <lvc:Axis Title="Y-axis Label" FontSize="12" FontWeight="Bold" Foreground="White"/>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
+                                <lvc:LineSeries Values="{Binding Values[1]}" FlowDirection="LeftToRight" PointGeometry="{x:Null}"/>
                             </lvc:CartesianChart.Series>
                         </lvc:CartesianChart>
                     </Grid>
@@ -965,7 +965,7 @@
                                 <lvc:Axis Title="Y-axis Label" FontSize="12" FontWeight="Bold" Foreground="White"/>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
+                                <lvc:LineSeries Values="{Binding Values[2]}" FlowDirection="LeftToRight" PointGeometry="{x:Null}"/>
                             </lvc:CartesianChart.Series>
                         </lvc:CartesianChart>
                     </Grid>
@@ -983,7 +983,7 @@
                                 <lvc:Axis Title="Y-axis Label" FontSize="12" FontWeight="Bold" Foreground="White"/>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
+                                <lvc:LineSeries Values="{Binding Values[3]}" FlowDirection="LeftToRight" PointGeometry="{x:Null}"/>
                             </lvc:CartesianChart.Series>
                         </lvc:CartesianChart>
                     </Grid>
@@ -1001,7 +1001,7 @@
                                 <lvc:Axis Title="Y-axis Label" FontSize="12" FontWeight="Bold" Foreground="White"/>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Values="{Binding Values}" FlowDirection="LeftToRight"/>
+                                <lvc:LineSeries Values="{Binding Values[4]}" FlowDirection="LeftToRight" PointGeometry="{x:Null}"/>
                             </lvc:CartesianChart.Series>
                         </lvc:CartesianChart>
                     </Grid>
