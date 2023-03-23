@@ -21,6 +21,9 @@ using System.Collections;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.InteropServices.ComTypes;
+using System.Collections.ObjectModel;
+using System.Reflection.Emit;
+using System.ComponentModel;
 
 namespace FEC_UI2
 {
@@ -31,12 +34,20 @@ namespace FEC_UI2
     {
         public ChartValues<float>[] Values { get; set; }
 
-        private readonly Random _r = new Random();
+        public ObservableCollection<string>[] Labels { get; set; }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private readonly int _delay = 1000;
 
         Queue[] DataQ = new Queue[5];
 
-        private const string SERVER_ADDRESS = "192.168.1.122";
+        private const string SERVER_ADDRESS = "192.168.1.124";
         private const int SERVER_PORT = 6000;
 
         private TcpClient client;
@@ -52,26 +63,40 @@ namespace FEC_UI2
 
         public MainWindow()
         {
-            InitializeComponent();
-
-            DataContext = this;
-
-            Values = new ChartValues<float>[5];
-            for (int i = 0; i < Values.Length; i++)
+            try
             {
-                Values[i] = new ChartValues<float>();
-            }
+                InitializeComponent();
 
-            for (int i = 0; i < DataQ.Length; i++)
+                DataContext = this;
+
+                Values = new ChartValues<float>[5];
+                for (int i = 0; i < Values.Length; i++)
+                {
+                    Values[i] = new ChartValues<float>();
+                }
+
+                Labels = new ObservableCollection<string>[5];
+                for (int i = 0; i < Labels.Length; i++)
+                {
+                    Labels[i] = new ObservableCollection<string>();
+                }
+
+                for (int i = 0; i < DataQ.Length; i++)
+                {
+                    DataQ[i] = new Queue();
+                }
+
+                Sync = new object();
+
+                Task.Run(InputData);
+
+                Task.Run(ReadData);
+            }
+            catch (Exception ex)
             {
-                DataQ[i] = new Queue();
+                MessageBox.Show(ex.Message);
+                Environment.Exit(1); // terminate the program with error code 1
             }
-
-            Sync = new object();
-
-            Task.Run(InputData);
-
-            Task.Run(ReadData);
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -107,58 +132,140 @@ namespace FEC_UI2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                Environment.Exit(1); // terminate the program with error code 1
             }
 
             while (true)
             {
-                await Task.Delay(500);
-
-                // receive data from server
-                bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-
-                // split the data into rows and columns
-                rows = data.Split('\n');
-                if (rows.Length > 1)
+                try
                 {
-                    values = new string[rows.Length][];
-                    for (int i = 1; i < rows.Length; i++)
+                    await Task.Delay(500);
+
+                    // receive data from server
+                    bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                    data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+                    if (!client.Connected)
                     {
-                        cols = rows[i].Split('\t');
-                        values[i] = cols;
+                        MessageBox.Show("Connection to server lost.");
+                        Environment.Exit(1); // terminate the program with error code 1
                     }
 
-                    lock (Sync)
+                    // split the data into rows and columns
+                    rows = data.Split('\n');
+                    if (rows.Length > 1)
                     {
-                        for (int i = 1; i < values.Length; i++)
+                        values = new string[rows.Length][];
+                        for (int i = 1; i < rows.Length; i++)
                         {
-                            if (float.TryParse(values[i][8], out floatValue[i]))
+                            cols = rows[i].Split('\t');
+                            values[i] = cols;
+                        }
+
+                        lock (Sync)
+                        {
+                            for (int i = 1; i < values.Length; i++)
                             {
-                                Console.WriteLine(floatValue[i]); // Output: 3.14
+                                if (float.TryParse(values[i][8], out floatValue[i]))
+                                {
+                                    Console.WriteLine(floatValue[i]); // Output: 3.14
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Cannot convert string to float");
+                                }
+                                DataQ[i].Enqueue((float)floatValue[i]);
+                                Console.WriteLine(values[i][9]);
                             }
-                            else
-                            {
-                                Console.WriteLine("Cannot convert string to float");
-                            }
-                            DataQ[i].Enqueue((float)floatValue[i]);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Connection to server lost.");
+                        Environment.Exit(1); // terminate the program with error code 1
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Handle case where data contains no rows
-                }
+                    MessageBox.Show(ex.Message);
+                    Environment.Exit(1); // terminate the program with error code 1
+                }                
             }
         }
  
         private async Task ReadData()
         {
             await Task.Delay(1000);
-            try
+            DateTime originalDateTime;
+            string newTimeString = null;
+            string newDateString = null;
+
+            lock (Sync)
             {
-                while (true)
+                if (!client.Connected)
+                {
+                    MessageBox.Show("Connection to server lost.");
+                    Environment.Exit(1); // terminate the program with error code 1
+                }
+
+                try
+                {
+                    for (int i = 1; i < values.Length; i++)
+                    {
+                        if (DataQ[i].Count > 0)
+                        {
+                            // Dispatcher.Invoke() 메서드를 사용하여 UI 스레드에서 실행
+                            Dispatcher.Invoke(() =>
+                            {
+                                int index = int.Parse(values[i][0].Replace("Channel ", ""));
+                                if (index == 1)
+                                {
+                                    timeTextBox1.Text = values[i][7];
+                                }
+                                else if (index == 2)
+                                {
+                                    timeTextBox2.Text = values[i][7];
+                                }
+                                else if (index == 3)
+                                {
+                                    timeTextBox3.Text = values[i][7];
+                                }
+                                else if (index == 4)
+                                {
+                                    timeTextBox4.Text = values[i][7];
+                                }
+                                else
+                                {
+
+                                }
+                            });
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    // handle the exception
+                    Console.WriteLine("NullReferenceException: " + ex.Message);
+                    Environment.Exit(1); // terminate the program with error code 1
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Environment.Exit(1); // terminate the program with error code 1
+                }
+            }
+
+            while (true)
+            {
+                try
                 {
                     await Task.Delay(_delay);
+
+                    if (!client.Connected)
+                    {
+                        MessageBox.Show("Connection to server lost.");
+                        Environment.Exit(1); // terminate the program with error code 1
+                    }
 
                     lock (Sync)
                     {
@@ -170,9 +277,14 @@ namespace FEC_UI2
                                 Dispatcher.Invoke(() =>
                                 {
                                     Values[i].Add((float)DataQ[i].Dequeue());
+                                    originalDateTime = DateTime.ParseExact(values[i][9], "yyyy-MM-dd HH:mm:ss", null);
+                                    newTimeString = originalDateTime.ToString("HH:mm:ss");
+                                    Labels[i].Add(newTimeString);
+
                                     if (Values[i].Count > 120)
                                     {
                                         Values[i].RemoveAt(0);
+                                        Labels[i].RemoveAt(0);
                                     }
 
                                     int index = int.Parse(values[i][0].Replace("Channel ", ""));
@@ -183,7 +295,7 @@ namespace FEC_UI2
                                         CorrectedTextBlock1.Text = values[i][3];
                                         PostBerTextBlock1.Text = values[i][4];
                                         MarginTextBlock1.Text = values[i][5];
-                                        BitsTextBlock1.Text = values[i][6];
+                                        BitsTextBlock1.Text = values[i][6];                                     
                                     }
                                     else if (index == 2)
                                     {
@@ -216,16 +328,82 @@ namespace FEC_UI2
                                     {
 
                                     }
+
+                                    newDateString = originalDateTime.ToString("yyyy-MM-dd");
+                                    DateTextBlock.Text = newDateString;
+
+                                    OnPropertyChanged(nameof(Labels));
                                 });
                             }
                         }
                     }
                 }
+                catch (NullReferenceException ex)
+                {
+                    // handle the exception
+                    Console.WriteLine("NullReferenceException: " + ex.Message);
+                    Environment.Exit(1); // terminate the program with error code 1
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Environment.Exit(1); // terminate the program with error code 1
+                }
             }
-            catch(Exception ex)
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            string timeValue = null;
+            int channel = 0;
+            Button clickedButton = sender as Button;
+
+            if (clickedButton != null)
             {
-                MessageBox.Show(ex.Message);
+                // Do something based on the clicked button
+                if (clickedButton.Name == "SendButton1")
+                {
+                    // Get the value of the TextBox
+                    timeValue = timeTextBox1.Text;
+                    channel = 1;
+                }
+                else if (clickedButton.Name == "SendButton2")
+                {
+                    // Get the value of the TextBox
+                    timeValue = timeTextBox2.Text;
+                    channel = 2;
+                }
+                else if (clickedButton.Name == "SendButton3")
+                {
+                    // Get the value of the TextBox
+                    timeValue = timeTextBox3.Text;
+                    channel = 3;
+                }
+                else if (clickedButton.Name == "SendButton4")
+                {
+                    // Get the value of the TextBox
+                    timeValue = timeTextBox4.Text;
+                    channel = 4;
+                }
             }
+
+            // Convert channel and timeValue to bytes and combine them into a single array
+            byte[] channelBytes = BitConverter.GetBytes(channel);
+            byte[] timeBytes = Encoding.ASCII.GetBytes(timeValue);
+            byte[] data = new byte[channelBytes.Length + timeBytes.Length];
+            Array.Copy(channelBytes, 0, data, 0, channelBytes.Length);
+            Array.Copy(timeBytes, 0, data, channelBytes.Length, timeBytes.Length);
+
+            // Send the data
+            stream.Write(data, 0, data.Length);
+
+            MessageBox.Show(string.Format("Channel {0}의 데이터 전송 주기 수정이 완료되었습니다.", channel));
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Perform normal shutdown of the application
+            Application.Current.Shutdown();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -239,6 +417,7 @@ namespace FEC_UI2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                Environment.Exit(1); // terminate the program with error code 1
             }
         }
     }
